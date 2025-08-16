@@ -6,159 +6,268 @@
 <title>Cahier d’Anglais – V2 (Benny)</title>
 <style>
   :root{
-    --primary:#0B3D91; --accent:#2EA3F2; --bg:#F2F7FB; --card:#FFFFFF; --muted:#6B7A90; --ok:#21a67a; --err:#d9534f;
+    --primary:#7C3AED; --secondary:#06B6D4; --accent:#22C55E;
+    --bg:#F6F8FE; --card:#FFFFFF; --ink:#0f172a; --muted:#64748b;
+    --ok:#16a34a; --err:#ef4444; --warn:#f59e0b;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#1b2b40}
-  header{background:linear-gradient(135deg,var(--primary),#134fbf);color:#fff;padding:28px 16px;text-align:center}
+  html,body{margin:0;padding:0}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  header{background:linear-gradient(120deg,var(--primary),#4F46E5 60%, var(--secondary));color:#fff;padding:28px 16px;text-align:center}
   header h1{margin:0 0 6px;font-size:28px}
-  header p{margin:0;font-size:15px;opacity:.9}
-  nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px;background:#e7f1fc;border-bottom:1px solid #d7e6fb}
-  nav a{background:var(--primary);color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600;font-size:14px}
-  main{max-width:920px;margin:24px auto;padding:0 14px}
-  section{background:var(--card);border:1px solid #e6eef9;border-radius:12px;margin:16px 0;padding:18px}
-  h2{margin:0 0 12px;color:var(--primary);font-size:22px}
-  h3{margin:16px 0 8px;color:#12325e;font-size:18px}
+  header p{margin:0;font-size:15px;opacity:.95}
+  .topbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px;background:#eef2ff;border-bottom:1px solid #e5e7eb}
+  .topbar a{background:#4F46E5;color:#fff;text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:700;font-size:13px}
+  .topbar a:hover{filter:brightness(.95)}
+  main{max-width:1040px;margin:22px auto;padding:0 14px}
+  section{background:var(--card);border:1px solid #e5e7eb;border-radius:14px;margin:16px 0;padding:18px}
+  h2{margin:0 0 12px;color:#312e81;font-size:22px}
+  h3{margin:16px 0 8px;color:#334155;font-size:18px}
   .muted{color:var(--muted);font-size:13px}
+  .card{background:#fafaff;border:1px dashed #e5e7eb;border-radius:12px;padding:12px;margin:10px 0}
+  .row{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:860px){.row{grid-template-columns:1fr 1fr}}
   .table{width:100%;border-collapse:separate;border-spacing:0}
-  .table th,.table td{padding:10px 8px;border-bottom:1px solid #edf3fb}
-  .table th{background:#f5f9ff;color:#12325e;text-align:left;font-size:14px}
-  .chip{display:inline-block;background:#eef6ff;color:#124a93;padding:3px 8px;border-radius:999px;font-size:12px;margin-left:6px}
-  .card{background:#f8fbff;border:1px dashed #dce8fb;border-radius:10px;padding:12px;margin:10px 0}
-  .row{display:grid;grid-template-columns:1fr;gap:8px}
-  @media(min-width:720px){.row{grid-template-columns:1fr 1fr}}
+  .table th,.table td{padding:10px 8px;border-bottom:1px solid #eef2ff;font-size:15px}
+  .table th{background:#EEF2FF;color:#312e81;text-align:left}
+  .badge{display:inline-block;padding:3px 8px;border-radius:999px;background:#ecfeff;color:#155e75;font-weight:700;font-size:12px;margin-left:6px}
   input[type="text"], textarea, select{
-    width:100%; padding:10px 12px;border:1px solid #d9e6fa;border-radius:8px;background:#fff;font-size:15px
+    width:100%;padding:10px 12px;border:1px solid #dbeafe;border-radius:10px;background:#fff;font-size:15px
   }
-  button{background:var(--accent);border:none;color:#fff;font-weight:700;padding:10px 14px;border-radius:10px;cursor:pointer}
-  button.secondary{background:#eaf3ff;color:#0b3d91}
-  .result{font-weight:700;margin-top:6px}
-  .ok{color:var(--ok)} .err{color:var(--err)}
-  .checklist label{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed #edf3fb}
-  .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef8f4;color:#157a5c;font-size:12px;font-weight:700}
-  footer{padding:30px 16px;text-align:center;color:#5a6c86}
+  button{background:linear-gradient(120deg,#4F46E5,var(--primary));border:none;color:#fff;font-weight:800;
+    padding:10px 14px;border-radius:12px;cursor:pointer}
+  button.secondary{background:#e0e7ff;color:#3730a3}
+  .result{font-weight:800;margin-top:6px}
+  .ok{color:var(--ok)} .err{color:var(--err)} .warn{color:var(--warn)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#ecfdf5;color:#065f46;font-size:12px;font-weight:800}
+  .grid3{display:grid;grid-template-columns:1fr;gap:10px}
+  @media(min-width:880px){.grid3{grid-template-columns:1fr 1fr 1fr}}
+  details{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px;margin:10px 0}
+  details>summary{cursor:pointer;font-weight:700;color:#334155}
+  .tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+  .tool{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:8px 10px;font-size:13px}
+  .flash{display:flex;flex-direction:column;gap:8px}
+  .flash .card{cursor:pointer;transition:transform .08s ease}
+  .flash .card:hover{transform:scale(1.01)}
+  .kbd{display:inline-block;border:1px solid #e5e7eb;border-bottom-width:3px;border-radius:8px;padding:2px 8px;background:#fff;font-weight:700}
+  .right{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .srch{display:flex;gap:8px;flex-wrap:wrap}
 </style>
 </head>
 <body>
 
 <header>
   <h1>Cahier d’Anglais – V2 (Benny)</h1>
-  <p>Conversation • Vocabulaire • Grammaire • Prononciation • Exercices</p>
+  <p>Coloré, fun et 100% interactif — Conversation • Vocabulaire • Grammaire • Exercices • Prononciation</p>
 </header>
 
-<nav>
-  <a href="#intro">Introduction</a>
+<nav class="topbar">
+  <a href="#accueil">Accueil</a>
   <a href="#conversation">Conversation</a>
   <a href="#vocab">Vocabulaire</a>
-  <a href="#gram">Grammaire</a>
+  <a href="#flashcards">Flashcards</a>
+  <a href="#grammaire">Grammaire</a>
   <a href="#connecteurs">Connecteurs</a>
   <a href="#compliments">Compliments</a>
+  <a href="#olive">Huile d’olive</a>
   <a href="#exos">Exercices</a>
   <a href="#prononciation">Prononciation</a>
   <a href="#checklist">Checklist</a>
+  <a href="#export">Exporter PDF</a>
   <a href="#reponses">Réponses</a>
 </nav>
 
 <main>
 
-<section id="intro">
-  <h2>Introduction</h2>
-  <p class="muted">Astuce méthode : lis à voix haute, écris une phrase d’exemple, et réutilise chaque nouvel élément en discussion avec ton amie.</p>
+<!-- ACCUEIL -->
+<section id="accueil">
+  <h2>Bienvenue Benny 👋</h2>
   <div class="row">
     <div class="card">
-      <h3>Objectif 4 semaines <span class="chip">B1 → B1+/B2-</span></h3>
+      <h3>Comment utiliser ce cahier</h3>
       <ul>
-        <li>Fluidité : parler tous les jours 5–10 min.</li>
-        <li>Précision : 1 point de grammaire/jour.</li>
-        <li>Lexique : 6–10 mots/expressions/jour.</li>
+        <li>📖 Lis chaque section puis 🗣️ répète à voix haute.</li>
+        <li>✏️ Écris tes propres phrases dans les zones prévues.</li>
+        <li>🧠 Fais les exercices et vérifie dans <a href="#reponses">Réponses</a>.</li>
+        <li>✅ Coche la <a href="#checklist">Checklist</a> (progression sauvegardée).</li>
       </ul>
     </div>
     <div class="card">
-      <h3>Comment utiliser le cahier</h3>
+      <h3>Objectif 4 semaines <span class="badge">B1 → B1+/B2-</span></h3>
       <ul>
-        <li>📖 Lis → 🗣️ Dis à voix haute → ✏️ Écris → 💬 Utilise en contexte.</li>
-        <li>🎯 Fais les exos, puis compare dans <a href="#reponses">Réponses</a>.</li>
-        <li>✅ Coche la <a href="#checklist">Checklist</a> chaque jour.</li>
+        <li>🎯 10 mots/expressions par jour</li>
+        <li>🧩 1 point de grammaire par jour</li>
+        <li>💬 5–10 min de conversation authentique</li>
       </ul>
     </div>
   </div>
 </section>
 
+<!-- CONVERSATION -->
 <section id="conversation">
   <h2>Conversation quotidienne</h2>
-  <div class="row">
-    <div>
+  <div class="grid3">
+    <div class="card">
       <h3>Phrases utiles</h3>
       <ul>
-        <li>Hello! How are you today? <span class="muted">(Salut ! Ça va aujourd’hui ?)</span></li>
-        <li>What did you do yesterday? <span class="muted">(Qu’as-tu fait hier ?)</span></li>
-        <li>Are you working tomorrow? <span class="muted">(Tu travailles demain ?)</span></li>
-        <li>How long have you been living here? <span class="muted">(Depuis combien de temps tu vis ici ?)</span></li>
-        <li>Why are you tired today? <span class="muted">(Pourquoi es-tu fatigué aujourd’hui ?)</span></li>
+        <li>Hello! How are you today? <span class="muted">— Salut ! Ça va aujourd’hui ?</span></li>
+        <li>What did you do yesterday? <span class="muted">— Qu’as-tu fait hier ?</span></li>
+        <li>Are you working tomorrow? <span class="muted">— Tu travailles demain ?</span></li>
+        <li>How long have you been living here? <span class="muted">— Depuis combien de temps tu vis ici ?</span></li>
+        <li>Why are you tired today? <span class="muted">— Pourquoi es-tu fatigué aujourd’hui ?</span></li>
       </ul>
     </div>
-    <div>
-      <h3>Mini-dialogue (modèle)</h3>
-      <div class="card">
-        <p><strong>A</strong>: What did you do yesterday?</p>
-        <p><strong>B</strong>: I went to the market and cooked dinner.</p>
-        <p><strong>A</strong>: Nice! Are you working tomorrow?</p>
-        <p><strong>B</strong>: Yes, I’m working in the morning.</p>
-      </div>
-      <label for="dial1">💬 Ta version (écris 2–3 lignes) :</label>
-      <textarea id="dial1" rows="3" placeholder="Écris ton mini-dialogue ici..."></textarea>
+    <div class="card">
+      <h3>Mini-dialogue modèle</h3>
+      <p><b>A</b>: What did you do yesterday?</p>
+      <p><b>B</b>: I went to the market and cooked dinner.</p>
+      <p><b>A</b>: Sounds nice! Are you working tomorrow?</p>
+      <p><b>B</b>: Yes, in the morning.</p>
+    </div>
+    <div class="card">
+      <h3>Écris ton mini-dialogue</h3>
+      <textarea id="myDialog" rows="5" placeholder="Écris 2–3 répliques ici…"></textarea>
     </div>
   </div>
 </section>
 
+<!-- VOCABULAIRE + RECHERCHE -->
 <section id="vocab">
-  <h2>Vocabulaire (phonétique simplifiée)</h2>
-  <table class="table">
-    <thead><tr><th>Anglais</th><th>Phonétique</th><th>Français</th><th>Exemple</th></tr></thead>
-    <tbody>
-      <tr><td>chair</td><td>tchéèr</td><td>chaise</td><td>I’m sitting on the chair.</td></tr>
-      <tr><td>window</td><td>ouin-do</td><td>fenêtre</td><td>Please open the window.</td></tr>
-      <tr><td>bottle</td><td>bo-tol</td><td>bouteille</td><td>This bottle is full.</td></tr>
-      <tr><td>key</td><td>ki</td><td>clé</td><td>I can’t find my key.</td></tr>
-      <tr><td>beach</td><td>bitch</td><td>plage</td><td>We’re going to the beach.</td></tr>
-      <tr><td>river</td><td>ri-veur</td><td>rivière</td><td>The river is beautiful.</td></tr>
-      <tr><td>sunset</td><td>son-set</td><td>coucher de soleil</td><td>The sunset looks amazing.</td></tr>
-      <tr><td>fresh air</td><td>frèch èr</td><td>air frais</td><td>I love the fresh air here.</td></tr>
-      <tr><td>happy</td><td>ha-pi</td><td>heureux</td><td>I feel happy today.</td></tr>
-      <tr><td>jealous</td><td>dja-less</td><td>jaloux</td><td>Don’t be jealous.</td></tr>
-    </tbody>
-  </table>
+  <h2>Vocabulaire par thèmes <span class="badge">avec phonétique simplifiée</span></h2>
+  <div class="tools srch">
+    <input id="search" type="text" placeholder="🔎 Cherche un mot (en/fr) — ex: dress / robe / river" />
+    <button class="secondary" onclick="resetSearch()">Reset</button>
+  </div>
+
+  <details open>
+    <summary><b>Maison & quotidien</b></summary>
+    <table class="table" data-group="home">
+      <thead><tr><th>Anglais</th><th>Phonétique</th><th>Français</th><th>Exemple</th></tr></thead>
+      <tbody>
+        <tr><td>chair</td><td>tchéèr</td><td>chaise</td><td>I’m sitting on the chair.</td></tr>
+        <tr><td>table</td><td>té-bol</td><td>table</td><td>The keys are on the table.</td></tr>
+        <tr><td>window</td><td>ouin-do</td><td>fenêtre</td><td>Open the window, please.</td></tr>
+        <tr><td>bottle</td><td>bo-tol</td><td>bouteille</td><td>This bottle is full.</td></tr>
+        <tr><td>key</td><td>ki</td><td>clé</td><td>I can’t find my key.</td></tr>
+        <tr><td>stairs</td><td>stèrz</td><td>escaliers</td><td>The stairs are steep.</td></tr>
+        <tr><td>towel</td><td>tao-el</td><td>serviette</td><td>I need a towel.</td></tr>
+        <tr><td>broom</td><td>broum</td><td>balai</td><td>Where is the broom?</td></tr>
+      </tbody>
+    </table>
+  </details>
+
+  <details>
+    <summary><b>Ville & nature</b></summary>
+    <table class="table" data-group="city">
+      <thead><tr><th>Anglais</th><th>Phonétique</th><th>Français</th><th>Exemple</th></tr></thead>
+      <tbody>
+        <tr><td>river</td><td>ri-veur</td><td>rivière</td><td>The river is calm.</td></tr>
+        <tr><td>bridge</td><td>bridj</td><td>pont</td><td>We crossed the bridge.</td></tr>
+        <tr><td>bench</td><td>bentch</td><td>banc</td><td>Let’s sit on the bench.</td></tr>
+        <tr><td>traffic light</td><td>trafik laït</td><td>feu (circulation)</td><td>Stop at the red light.</td></tr>
+        <tr><td>beach</td><td>bii-tch</td><td>plage</td><td>We love the beach. <span class="muted">⚠️ “beach” = bii-tch (long) ≠ “bitch”.</span></td></tr>
+        <tr><td>fountain</td><td>faoun-tèn</td><td>fontaine</td><td>The fountain is beautiful.</td></tr>
+        <tr><td>sunset</td><td>son-set</td><td>coucher de soleil</td><td>The sunset looks amazing.</td></tr>
+        <tr><td>fresh air</td><td>frèch èr</td><td>air frais</td><td>I love breathing fresh air.</td></tr>
+      </tbody>
+    </table>
+  </details>
+
+  <details>
+    <summary><b>Émotions</b></summary>
+    <table class="table" data-group="feelings">
+      <thead><tr><th>Anglais</th><th>Phonétique</th><th>Français</th><th>Exemple</th></tr></thead>
+      <tbody>
+        <tr><td>happy</td><td>ha-pi</td><td>heureux</td><td>I feel happy today.</td></tr>
+        <tr><td>excited</td><td>ik-saï-tid</td><td>enthousiaste</td><td>I’m excited about tomorrow.</td></tr>
+        <tr><td>calm</td><td>kaam</td><td>calme</td><td>Stay calm.</td></tr>
+        <tr><td>surprised</td><td>sur-praïzd</td><td>surpris</td><td>She was surprised.</td></tr>
+        <tr><td>jealous</td><td>dja-luss</td><td>jaloux</td><td>Don’t be jealous.</td></tr>
+        <tr><td>grateful</td><td>gréït-foul</td><td>reconnaissant</td><td>I’m grateful for your help.</td></tr>
+      </tbody>
+    </table>
+  </details>
+
+  <details>
+    <summary><b>Compliments & style</b></summary>
+    <table class="table" data-group="compliments">
+      <thead><tr><th>Anglais</th><th>Phonétique</th><th>Français</th><th>Exemple</th></tr></thead>
+      <tbody>
+        <tr><td>beautiful</td><td>biou-ti-feul</td><td>beau/belle</td><td>You look beautiful today.</td></tr>
+        <tr><td>lovely dress</td><td>lov-li dres</td><td>jolie robe</td><td>That’s a lovely dress.</td></tr>
+        <tr><td>gorgeous eyes</td><td>gor-djos aïz</td><td>yeux magnifiques</td><td>Your eyes are gorgeous.</td></tr>
+        <tr><td>nice skin</td><td>naïs skine</td><td>jolie peau</td><td>You have nice skin.</td></tr>
+        <tr><td>elegant</td><td>é-li-gant</td><td>élégant(e)</td><td>You look elegant.</td></tr>
+        <tr><td>handsome</td><td>han-dsom</td><td>beau (homme)</td><td>You look handsome.</td></tr>
+      </tbody>
+    </table>
+  </details>
 </section>
 
-<section id="gram">
-  <h2>Grammaire – rappels express</h2>
+<!-- FLASHCARDS -->
+<section id="flashcards">
+  <h2>Flashcards (entraîne-toi vite)</h2>
+  <div class="tools">
+    <select id="fcSelect">
+      <option value="home">Maison</option>
+      <option value="city">Ville & nature</option>
+      <option value="feelings">Émotions</option>
+      <option value="compliments">Compliments</option>
+      <option value="olive">Huile d’olive</option>
+    </select>
+    <button class="secondary" onclick="fcPrev()">◀︎ Préc</button>
+    <button onclick="fcFlip()">Retourner</button>
+    <button class="secondary" onclick="fcNext()">Suiv ▶︎</button>
+  </div>
+  <div class="flash">
+    <div id="fcCard" class="card" onclick="fcFlip()">
+      Clique pour retourner la carte…
+    </div>
+    <div class="muted">Astuce: <span class="kbd">Flèche gauche/droite</span> pour naviguer</div>
+  </div>
+</section>
+
+<!-- GRAMMAIRE -->
+<section id="grammaire">
+  <h2>Grammaire — rappels clairs</h2>
   <div class="row">
     <div class="card">
       <h3>Présent simple vs continu</h3>
       <ul>
-        <li><strong>Present Simple</strong> (habitude) : I work every day.</li>
-        <li><strong>Present Continuous</strong> (maintenant/plan) : I’m working now / I’m meeting her tonight.</li>
+        <li><b>Present Simple</b> (habitude): I work every day.</li>
+        <li><b>Present Continuous</b> (maintenant/plan): I’m working now / I’m meeting her tonight.</li>
       </ul>
     </div>
     <div class="card">
-      <h3>Passé simple / Past continuous</h3>
+      <h3>Passé simple vs past continuous</h3>
       <ul>
-        <li><strong>Past Simple</strong> (terminé, daté) : We started at 8.</li>
-        <li><strong>Past Continuous</strong> (action en cours interrompue) : We were harvesting when it started raining.</li>
+        <li><b>Past Simple</b> (terminé, daté): We started at 8.</li>
+        <li><b>Past Continuous</b> (en cours dans le passé): We were eating when she called.</li>
       </ul>
     </div>
   </div>
   <div class="card">
-    <h3>Present perfect (expérience / durée)</h3>
+    <h3>Present perfect (expérience/durée)</h3>
     <ul>
-      <li><strong>Have/has + V-en</strong> : I have never tasted it.</li>
-      <li><strong>Have/has been + V-ing</strong> (durée) : She has been working since 6 a.m.</li>
+      <li><b>Have/has + V-en</b>: I have never tried it.</li>
+      <li><b>Have/has been + V-ing</b> (durée): She has been working since 6 a.m.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Former des questions (ordre & auxiliaires)</h3>
+    <ul>
+      <li><b>Do/Does + sujet + base</b> (présent): Do you like it?</li>
+      <li><b>Did + sujet + base</b> (passé): Did you go?</li>
+      <li><b>Be + sujet + -ing</b> (action en cours): Are you working?</li>
+      <li><b>Have/Has + sujet + V-en</b>: Have you finished?</li>
+      <li><b>Mot interrogatif</b> (What/Why/How long…) <b>+</b> auxiliaire <b>+</b> sujet <b>+</b> verbe.</li>
     </ul>
   </div>
 </section>
 
+<!-- CONNECTEURS -->
 <section id="connecteurs">
-  <h2>Mots de liaison (à varier)</h2>
+  <h2>Mots de liaison (varie ton style)</h2>
   <table class="table">
     <thead><tr><th>Anglais</th><th>Français</th><th>Exemple</th></tr></thead>
     <tbody>
@@ -166,39 +275,72 @@
       <tr><td>because</td><td>parce que</td><td>I stayed home because it rained.</td></tr>
       <tr><td>also</td><td>aussi</td><td>I like tea. I also like coffee.</td></tr>
       <tr><td>however</td><td>cependant</td><td>I love summer; however, it’s too hot today.</td></tr>
-      <tr><td>in the meantime</td><td>en attendant</td><td>Cook the pasta; in the meantime, cut the tomatoes.</td></tr>
-      <tr><td>actually</td><td>en fait</td><td>Actually, I don’t agree.</td></tr>
+      <tr><td>therefore</td><td>par conséquent</td><td>It was closed; therefore, we left.</td></tr>
+      <tr><td>in the meantime</td><td>en attendant</td><td>Boil the water; in the meantime, cut the garlic.</td></tr>
+      <tr><td>actually</td><td>en fait</td><td>Actually, I disagree.</td></tr>
+      <tr><td>anyway</td><td>de toute façon</td><td>Anyway, let’s move on.</td></tr>
     </tbody>
   </table>
 </section>
 
+<!-- COMPLIMENTS -->
 <section id="compliments">
-  <h2>Compliments & réponses</h2>
-  <div class="row">
+  <h2>Compliments & expressions amicales/romantiques</h2>
+  <div class="grid3">
     <div class="card">
       <h3>À dire</h3>
       <ul>
-        <li>You have a beautiful smile. <span class="muted">(Tu as un joli sourire.)</span></li>
-        <li>You look beautiful today. <span class="muted">(Tu es très belle aujourd’hui.)</span></li>
-        <li>I like your style. <span class="muted">(J’aime ton style.)</span></li>
-        <li>This dress looks great on you. <span class="muted">(Cette robe te va très bien.)</span></li>
+        <li>You have a beautiful smile. <span class="muted">Tu as un joli sourire.</span></li>
+        <li>You look gorgeous today. <span class="muted">Tu es magnifique aujourd’hui.</span></li>
+        <li>I like your style. <span class="muted">J’aime ton style.</span></li>
+        <li>This dress looks great on you. <span class="muted">Cette robe te va très bien.</span></li>
       </ul>
     </div>
     <div class="card">
-      <h3>Répondre naturellement</h3>
+      <h3>Gentillesses du quotidien</h3>
+      <ul>
+        <li>Text me when you get home safe. <span class="muted">Écris-moi quand tu es bien rentrée.</span></li>
+        <li>You made my day. <span class="muted">Tu as illuminé ma journée.</span></li>
+        <li>Sleep well, sweet dreams. <span class="muted">Dors bien, fais de beaux rêves.</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Répondre</h3>
       <ul>
         <li>Thank you, that’s so kind!</li>
-        <li>Thanks! I really appreciate it.</li>
-        <li>That’s sweet of you. Thanks!</li>
+        <li>Thanks, I really appreciate it.</li>
+        <li>That’s sweet of you.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section id="exos">
-  <h2>Exercices (correction auto)</h2>
+<!-- HUILE D'OLIVE -->
+<section id="olive">
+  <h2>Vocabulaire spécial : Huile d’olive 🌿</h2>
+  <p class="muted">Pour parler de l’exploitation d’huile d’olive & des dégustations.</p>
+  <table class="table">
+    <thead><tr><th>Anglais</th><th>Phonétique</th><th>Français</th><th>Exemple</th></tr></thead>
+    <tbody>
+      <tr><td>olive grove</td><td>o-liv grov</td><td>oliveraie</td><td>The olive grove is on the hill.</td></tr>
+      <tr><td>harvest / to harvest</td><td>har-vèst</td><td>récolte / récolter</td><td>The harvest starts in October.</td></tr>
+      <tr><td>press / mill</td><td>près / mil</td><td>pressoir / moulin</td><td>We press the olives the same day.</td></tr>
+      <tr><td>cold-pressed</td><td>kold-prèst</td><td>pressée à froid</td><td>It’s cold-pressed extra virgin oil.</td></tr>
+      <tr><td>extra virgin</td><td>èk-stra veur-djin</td><td>extra-vierge</td><td>Extra virgin olive oil.</td></tr>
+      <tr><td>acidity</td><td>a-si-di-ti</td><td>acidité</td><td>Low acidity is desirable.</td></tr>
+      <tr><td>tasting notes</td><td>té-sting nots</td><td>notes de dégustation</td><td>Fruity with a peppery finish.</td></tr>
+      <tr><td>filtration</td><td>fil-tré-chon</td><td>filtration</td><td>Filtered vs unfiltered oil.</td></tr>
+      <tr><td>bottling</td><td>bo-tling</td><td>embouteillage</td><td>Bottling happens on site.</td></tr>
+      <tr><td>drizzle</td><td>dri-zol</td><td>arroser (verser en filet)</td><td>Drizzle it on salad.</td></tr>
+    </tbody>
+  </table>
+</section>
 
-  <h3>1) Choix multiples – Temps & formes</h3>
+<!-- EXERCICES -->
+<section id="exos">
+  <h2>Exercices — auto-correction</h2>
+
+  <h3>1) QCM (Temps & formes)</h3>
   <div class="card">
     <ol id="qcm">
       <li>How long ___ you been living here?
@@ -218,7 +360,10 @@
         </select>
       </li>
     </ol>
-    <button onclick="corrigerQCM()">Corriger</button>
+    <div class="right">
+      <button onclick="corrigerQCM()">Corriger</button>
+      <button class="secondary" onclick="resetQCM()">Reset</button>
+    </div>
     <div id="qcmRes" class="result"></div>
   </div>
 
@@ -230,7 +375,10 @@
     <p>“Depuis combien de temps attends-tu le bus ?” →
       <input id="t2" type="text" placeholder="Ta réponse" />
     </p>
-    <button onclick="corrigerTrad()">Corriger</button>
+    <div class="right">
+      <button onclick="corrigerTrad()">Corriger</button>
+      <button class="secondary" onclick="resetTrad()">Reset</button>
+    </div>
     <div id="tradRes" class="result"></div>
   </div>
 
@@ -239,119 +387,253 @@
     <p>I was tired, <input id="c1" type="text" placeholder="..." style="max-width:120px" /> I went home.</p>
     <p>I stayed home <input id="c2" type="text" placeholder="..." style="max-width:120px" /> it was raining.</p>
     <p>I love summer; <input id="c3" type="text" placeholder="..." style="max-width:120px" /> it’s too hot today.</p>
-    <button onclick="corrigerConn()">Corriger</button>
+    <div class="right">
+      <button onclick="corrigerConn()">Corriger</button>
+      <button class="secondary" onclick="resetConn()">Reset</button>
+    </div>
     <div id="connRes" class="result"></div>
+  </div>
+
+  <h3>4) Former des questions (choisis le bon auxiliaire)</h3>
+  <div class="card">
+    <ol id="aux">
+      <li>___ you like cooking? 
+        <select data-answer="do"><option value="">—</option><option>do</option><option>does</option><option>did</option></select>
+      </li>
+      <li>___ she working now?
+        <select data-answer="is"><option value="">—</option><option>is</option><option>are</option><option>does</option></select>
+      </li>
+      <li>___ they finished yet?
+        <select data-answer="have"><option value="">—</option><option>has</option><option>have</option><option>did</option></select>
+      </li>
+    </ol>
+    <div class="right">
+      <button onclick="corrigerAux()">Corriger</button>
+      <button class="secondary" onclick="resetAux()">Reset</button>
+    </div>
+    <div id="auxRes" class="result"></div>
   </div>
 </section>
 
+<!-- PRONONCIATION -->
 <section id="prononciation">
-  <h2>Prononciation express (simplifiée)</h2>
+  <h2>Prononciation express</h2>
   <ul>
-    <li><strong>th</strong> → mets la langue entre les dents : <em>this</em> (zis), <em>think</em> (sink léger / “ssink”).</li>
-    <li><strong>h</strong> aspiré : happy (ha-pi), house (haous).</li>
-    <li><strong>r</strong> anglais très léger : girl (gueurl), tomorrow (te-mo-ro).</li>
-    <li>Accent tonique : beau-TI-ful (biou-TI-feul), to-DAy (te-DÉ).</li>
+    <li><b>th</b> : langue entre les dents → <em>this</em> (zis), <em>think</em> (ssink doux).</li>
+    <li><b>h</b> aspiré : happy (ha-pi), house (haous).</li>
+    <li><b>r</b> anglais léger : girl (gueurl), tomorrow (te-mo-ro).</li>
+    <li>Accent tonique : beau-TI-ful (biou-TI-feul), to-DAY (te-DÉ).</li>
+    <li><b>beach</b> = <b>bii-tch</b> (voyelle longue) — pas “bitch”.</li>
   </ul>
 </section>
 
+<!-- CHECKLIST -->
 <section id="checklist">
-  <h2>Checklist quotidienne (Semaine type)</h2>
-  <div class="card checklist">
-    <label><input type="checkbox" /> 📖 Vocabulaire révisé (10 min)</label>
-    <label><input type="checkbox" /> 🗣️ 5 phrases dites à voix haute</label>
-    <label><input type="checkbox" /> ✏️ 1 mini-dialogue écrit</label>
-    <label><input type="checkbox" /> 🎧 5 min d’écoute (podcast / vidéo)</label>
-    <label><input type="checkbox" /> ✅ Auto-évaluation (fluide ? précis ?)</label>
-    <p class="pill">Objectif : 5 jours sur 7</p>
+  <h2>Checklist quotidienne (sauvegardée)</h2>
+  <div class="card">
+    <label><input type="checkbox" class="ck" data-id="voc"> 📖 Vocabulaire révisé (10 min)</label>
+    <label><input type="checkbox" class="ck" data-id="speak"> 🗣️ 5 phrases dites à voix haute</label>
+    <label><input type="checkbox" class="ck" data-id="write"> ✏️ 1 mini-dialogue écrit</label>
+    <label><input type="checkbox" class="ck" data-id="listen"> 🎧 5 min d’écoute</label>
+    <label><input type="checkbox" class="ck" data-id="review"> ✅ Auto-évaluation (fluide/précis)</label>
+    <div class="right" style="margin-top:8px">
+      <button class="secondary" onclick="resetChecklist()">Reset checklist</button>
+    </div>
   </div>
 </section>
 
+<!-- EXPORT PDF -->
+<section id="export">
+  <h2>Exporter en PDF</h2>
+  <p>Clique sur le bouton ci-dessous pour ouvrir la boîte d’impression et choisis <b>Enregistrer en PDF</b>.</p>
+  <button onclick="window.print()">🧾 Exporter en PDF</button>
+</section>
+
+<!-- REPONSES -->
 <section id="reponses">
   <h2>Réponses (spoilers)</h2>
   <details>
-    <summary><strong>Afficher / cacher les réponses</strong></summary>
+    <summary><b>Afficher / cacher les réponses</b></summary>
     <h3>QCM</h3>
     <ul>
-      <li>How long <u>have</u> you been living here?</li>
-      <li>By the time you arrive, I <u>will have</u> finished cooking.</li>
-      <li>If it <u>rains</u> tomorrow, we’ll stay home.</li>
+      <li>have</li>
+      <li>will have</li>
+      <li>rains</li>
     </ul>
     <h3>Traductions</h3>
     <ul>
-      <li>Tu as un joli sourire. → <u>You have a beautiful (ou lovely/cute) smile.</u></li>
-      <li>Depuis combien de temps attends-tu le bus ? → <u>How long have you been waiting for the bus?</u></li>
+      <li>You have a beautiful / lovely / cute smile.</li>
+      <li>How long have you been waiting for the bus?</li>
     </ul>
     <h3>Connecteurs</h3>
     <ul>
-      <li>I was tired, <u>so</u> I went home.</li>
-      <li>I stayed home <u>because</u> it was raining.</li>
-      <li>I love summer; <u>however</u>, it’s too hot today.</li>
+      <li>so</li>
+      <li>because</li>
+      <li>however</li>
+    </ul>
+    <h3>Auxiliaires (questions)</h3>
+    <ul>
+      <li>do</li>
+      <li>is</li>
+      <li>have</li>
     </ul>
   </details>
 </section>
 
 </main>
 
-<footer>
-  <p>Cahier d’Anglais – V2 • Benny • Exporte en PDF via Fichier → Imprimer → Enregistrer en PDF</p>
+<footer style="text-align:center;padding:28px;color:#64748b">
+  Cahier d’Anglais – V2 • Benny • Site autonome (HTML/CSS/JS) — Export PDF possible
 </footer>
 
 <script>
-  function corrigerQCM(){
-    const selects=[...document.querySelectorAll('#qcm select')];
-    let ok=0;
-    selects.forEach(s=>{
-      const good=s.dataset.answer.trim().toLowerCase();
-      const val=(s.value||'').trim().toLowerCase();
-      s.style.borderColor = (val===good)? '#21a67a' : '#d9534f';
-      if(val===good) ok++;
-    });
-    const res=document.getElementById('qcmRes');
-    res.innerHTML = ok===selects.length
-      ? '✅ Parfait : ' + ok + '/' + selects.length
-      : 'ℹ️ Score : ' + ok + '/' + selects.length + ' — vérifie les réponses en bas (section Réponses).';
-    res.className='result ' + (ok===selects.length?'ok':'');
-  }
+/* ========= Recherche vocabulaire ========= */
+function resetSearch(){ document.getElementById('search').value=''; filterTables(''); }
+document.getElementById('search').addEventListener('input',e=>filterTables(e.target.value));
+function filterTables(q){
+  q=(q||'').trim().toLowerCase();
+  document.querySelectorAll('table.table tbody tr').forEach(tr=>{
+    const t = tr.innerText.toLowerCase();
+    tr.style.display = t.includes(q) ? '' : 'none';
+  });
+}
 
-  function norm(s){return (s||'').trim().toLowerCase().replace(/\s+/g,' ');}
+/* ========= Flashcards ========= */
+const FC = {
+  home:[
+    {en:'chair', fr:'chaise', ph:'tchéèr'},
+    {en:'window', fr:'fenêtre', ph:'ouin-do'},
+    {en:'bottle', fr:'bouteille', ph:'bo-tol'},
+    {en:'key', fr:'clé', ph:'ki'},
+    {en:'towel', fr:'serviette', ph:'tao-el'}
+  ],
+  city:[
+    {en:'river', fr:'rivière', ph:'ri-veur'},
+    {en:'bridge', fr:'pont', ph:'bridj'},
+    {en:'bench', fr:'banc', ph:'bentch'},
+    {en:'beach', fr:'plage', ph:'bii-tch'},
+    {en:'sunset', fr:'coucher de soleil', ph:'son-set'}
+  ],
+  feelings:[
+    {en:'happy', fr:'heureux', ph:'ha-pi'},
+    {en:'excited', fr:'enthousiaste', ph:'ik-saï-tid'},
+    {en:'calm', fr:'calme', ph:'kaam'},
+    {en:'surprised', fr:'surpris', ph:'sur-praïzd'},
+    {en:'grateful', fr:'reconnaissant', ph:'gréït-foul'}
+  ],
+  compliments:[
+    {en:'beautiful', fr:'beau/belle', ph:'biou-ti-feul'},
+    {en:'lovely dress', fr:'jolie robe', ph:'lov-li dres'},
+    {en:'gorgeous eyes', fr:'yeux magnifiques', ph:'gor-djos aïz'},
+    {en:'elegant', fr:'élégant(e)', ph:'é-li-gant'},
+    {en:'handsome', fr:'beau (homme)', ph:'han-dsom'}
+  ],
+  olive:[
+    {en:'olive grove', fr:'oliveraie', ph:'o-liv grov'},
+    {en:'to harvest', fr:'récolter', ph:'har-vèst'},
+    {en:'press / mill', fr:'pressoir / moulin', ph:'près / mil'},
+    {en:'extra virgin', fr:'extra-vierge', ph:'èk-stra veur-djin'},
+    {en:'tasting notes', fr:'notes de dégustation', ph:'té-sting nots'}
+  ]
+};
+let fcIdx=0;
+function fcSet(idx){fcIdx=idx; fcShow();}
+function fcData(){ const g=document.getElementById('fcSelect').value; return FC[g]||[]; }
+function fcShow(front=true){
+  const data=fcData(); if(!data.length) return;
+  fcIdx = (fcIdx+data.length)%data.length;
+  const it=data[fcIdx];
+  const card=document.getElementById('fcCard');
+  card.dataset.side=front?'front':'back';
+  card.innerHTML = front
+    ? `<b>${it.en}</b><br><span class="muted">${it.ph}</span>`
+    : `<b>${it.fr}</b><br><span class="muted">utilise-le dans une phrase</span>`;
+}
+function fcFlip(){ const card=document.getElementById('fcCard'); fcShow(card.dataset.side!=='front'); }
+function fcNext(){ fcIdx++; fcShow(true); }
+function fcPrev(){ fcIdx--; fcShow(true); }
+document.getElementById('fcSelect').addEventListener('change',()=>{fcIdx=0;fcShow(true);});
+window.addEventListener('load',()=>fcShow(true));
+window.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight') fcNext();
+  if(e.key==='ArrowLeft') fcPrev();
+  if(e.key===' ') fcFlip();
+});
 
-  function corrigerTrad(){
-    const t1=norm(document.getElementById('t1').value);
-    const t2=norm(document.getElementById('t2').value);
-    let pts=0;
+/* ========= Exercices : normalisation ========= */
+function norm(s){return (s||'').trim().toLowerCase().replace(/\s+/g,' ');}
 
-    const ok1=[
-      'you have a beautiful smile',
-      'you have a lovely smile',
-      'you have a cute smile'
-    ];
-    if(ok1.includes(t1)) pts++;
+/* ========= QCM ========= */
+function corrigerQCM(){
+  const selects=[...document.querySelectorAll('#qcm select')];
+  let ok=0;
+  selects.forEach(s=>{
+    const good=s.dataset.answer.trim().toLowerCase();
+    const val=(s.value||'').trim().toLowerCase();
+    s.style.border='2px solid '+(val===good? '#16a34a' : '#ef4444');
+    if(val===good) ok++;
+  });
+  const res=document.getElementById('qcmRes');
+  res.textContent = ok===selects.length ? `✅ Parfait : ${ok}/${selects.length}` : `ℹ️ Score : ${ok}/${selects.length} — vois “Réponses”.`;
+  res.className='result ' + (ok===selects.length?'ok':'');
+}
+function resetQCM(){ document.querySelectorAll('#qcm select').forEach(s=>{s.value=''; s.style.border='1px solid #dbeafe'}); document.getElementById('qcmRes').textContent=''; }
 
-    const ok2='how long have you been waiting for the bus?';
-    if(t2===ok2) pts++;
+/* ========= Traductions ========= */
+function corrigerTrad(){
+  const t1=norm(document.getElementById('t1').value);
+  const t2=norm(document.getElementById('t2').value);
+  let pts=0;
+  const ok1=['you have a beautiful smile','you have a lovely smile','you have a cute smile'];
+  if(ok1.includes(t1)) pts++;
+  if(t2==='how long have you been waiting for the bus?') pts++;
+  const res=document.getElementById('tradRes');
+  res.textContent = pts===2 ? '✅ Parfait : 2/2' : `ℹ️ Score : ${pts}/2 — vois “Réponses”.`;
+  res.className='result ' + (pts===2?'ok':'');
+}
+function resetTrad(){ ['t1','t2'].forEach(id=>document.getElementById(id).value=''); document.getElementById('tradRes').textContent=''; }
 
-    const res=document.getElementById('tradRes');
-    res.innerHTML = (pts===2)
-      ? '✅ Parfait : 2/2'
-      : 'ℹ️ Score : '+pts+'/2 — vois les bonnes versions dans Réponses.';
-    res.className='result ' + (pts===2?'ok':'');
-  }
+/* ========= Connecteurs ========= */
+function corrigerConn(){
+  const c1=norm(document.getElementById('c1').value);
+  const c2=norm(document.getElementById('c2').value);
+  const c3=norm(document.getElementById('c3').value);
+  let pts=0;
+  if(c1==='so') pts++;
+  if(c2==='because') pts++;
+  if(c3==='however') pts++;
+  const res=document.getElementById('connRes');
+  res.textContent = pts===3 ? '✅ Parfait : 3/3' : `ℹ️ Score : ${pts}/3 — vois “Réponses”.`;
+  res.className='result ' + (pts===3?'ok':'');
+}
+function resetConn(){ ['c1','c2','c3'].forEach(id=>document.getElementById(id).value=''); document.getElementById('connRes').textContent=''; }
 
-  function corrigerConn(){
-    const c1=norm(document.getElementById('c1').value);
-    const c2=norm(document.getElementById('c2').value);
-    const c3=norm(document.getElementById('c3').value);
-    let pts=0;
-    if(c1==='so') pts++;
-    if(c2==='because') pts++;
-    if(c3==='however') pts++;
-    const res=document.getElementById('connRes');
-    res.innerHTML = (pts===3)
-      ? '✅ Parfait : 3/3'
-      : 'ℹ️ Score : '+pts+'/3 — vérifie la section Réponses.';
-    res.className='result ' + (pts===3?'ok':'');
-  }
+/* ========= Auxiliaires ========= */
+function corrigerAux(){
+  const sels=[...document.querySelectorAll('#aux select')];
+  let ok=0;
+  sels.forEach(s=>{
+    const good=s.dataset.answer;
+    s.style.border='2px solid ' + (s.value===good? '#16a34a':'#ef4444');
+    if(s.value===good) ok++;
+  });
+  const res=document.getElementById('auxRes');
+  res.textContent = ok===sels.length ? `✅ Parfait : ${ok}/${sels.length}` : `ℹ️ Score : ${ok}/${sels.length} — vois “Réponses”.`;
+  res.className='result ' + (ok===sels.length?'ok':'');
+}
+function resetAux(){ document.querySelectorAll('#aux select').forEach(s=>{s.value=''; s.style.border='1px solid #dbeafe'}); document.getElementById('auxRes').textContent=''; }
+
+/* ========= Checklist (localStorage) ========= */
+const CK_KEYS=['voc','speak','write','listen','review'];
+document.querySelectorAll('.ck').forEach(cb=>{
+  const k='ck_'+cb.dataset.id;
+  cb.checked = localStorage.getItem(k)==='1';
+  cb.addEventListener('change',()=> localStorage.setItem(k, cb.checked?'1':'0'));
+});
+function resetChecklist(){ document.querySelectorAll('.ck').forEach(cb=>{cb.checked=false; localStorage.setItem('ck_'+cb.dataset.id,'0')}); }
+
+/* ========= Démarrage ========= */
+window.addEventListener('load',()=>{ filterTables(''); });
 </script>
-
 </body>
 </html>
